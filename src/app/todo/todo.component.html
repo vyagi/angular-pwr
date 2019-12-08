@@ -1,5 +1,11 @@
 <app-todo-list [todos]="todos" (itemClicked)="itemDeleted($event)" (itemChanged)="itemChanged($event)"></app-todo-list>
 <hr>
-<button (click)="itemAdded()" [disabled]="!newTodo">Add todo</button>
-<input type="text" [(ngModel)]="newTodo">
-
+<form #todoForm="ngForm">
+    <label>Subject</label>
+    <input type="text" [(ngModel)]="newTodo.subject" name="subject" required>
+    <p class="validation-error"><small>The subject is required</small></p>
+    <label>Due date</label>
+    <input type="text" [(ngModel)]="newTodo.dueDate" name="dueDate" pattern="^\d{4}-\d{2}-\d{2}$">
+    <p class="validation-error"><small>The date format should be yyyy-mm-dd</small></p>
+    <input type="submit" (click)="itemAdded()" [disabled]="!newTodo.subject" value="Add todo">
+</form>

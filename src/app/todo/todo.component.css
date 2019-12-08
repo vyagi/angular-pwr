@@ -1,0 +1,14 @@
+input {
+  display: block;
+}
+input.ng-invalid.ng-touched:not(.ng-pristine) {
+  border: 1px solid red;
+}
+p.validation-error {
+  margin: 5px;
+  color: red;
+  display: none;
+}
+input.ng-invalid.ng-touched:not(.ng-pristine) + p.validation-error {
+  display: block;
+}
