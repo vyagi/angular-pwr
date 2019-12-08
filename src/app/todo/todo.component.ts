@@ -42,7 +42,10 @@ constructor(private todoService: TodoService) {}
 
   ngOnInit() {
     this.todoService.get()
-      .subscribe(response => this.todos = response);
+      .subscribe(response => this.todos = response,
+        error => {
+          alert(error.message);
+        });
   }
 
 }

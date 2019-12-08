@@ -9,6 +9,7 @@ import { TodoListComponent } from './todo-list/todo-list.component';
 import { HttpClientModule } from '@angular/common/http';
 import { HeaderComponent } from './header/header.component';
 import { AboutComponent } from './about/about.component';
+import { TodoDetailsComponent } from './todo-details/todo-details.component';
 
 @NgModule({
   declarations: [
@@ -16,13 +17,15 @@ import { AboutComponent } from './about/about.component';
     TodoComponent,
     TodoListComponent,
     HeaderComponent,
-    AboutComponent
+    AboutComponent,
+    TodoDetailsComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpClientModule,
     RouterModule.forRoot([
+      { path: 'todo/:id', component: TodoDetailsComponent},
       { path: 'todo', component: TodoComponent},
       { path: 'about', component: AboutComponent },
     ])

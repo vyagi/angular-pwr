@@ -1,6 +1,9 @@
 <ul>
-  <li *ngFor="let item of todos; index as i">{{item.subject}}
+  <!-- <li *ngFor="let item of todos; index as i" [style.text-decoration]="item.done ? 'line-through' : ''"><span class="content">{{item.subject}}</span></li>  -->
+
+  <li *ngFor="let item of todos; index as i" [ngClass]="{ 'done': item.done }">
+    <span class="content"><a [routerLink]="['/todo', item.id]" href="#">{{item.subject}}</a></span>
     <input type="checkbox" [(ngModel)]="item.done" (change)="itemChange(item)">
-    <span (click)="itemClick(item)">x</span>
+    <span class="remove" (click)="itemClick(item)">x</span>
   </li>
 </ul>

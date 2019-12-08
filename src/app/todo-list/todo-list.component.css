@@ -1,4 +1,7 @@
-span {
+span.remove {
   color: red;
   cursor: pointer;
+}
+li.done > .content {
+  text-decoration: line-through;
 }

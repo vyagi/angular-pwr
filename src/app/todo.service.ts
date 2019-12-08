@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { catchError } from 'rxjs/operators';
+import { throwError } from 'rxjs/internal/observable/throwError';
 
 @Injectable({
   providedIn: 'root'
@@ -8,7 +10,12 @@ export class TodoService {
   private url = 'https://todoapimj.azurewebsites.net/api/todo';
   constructor(private httpClient: HttpClient) { }
   get() {
-    return this.httpClient.get<any>(this.url);
+    return this.httpClient.get<any>(this.url)
+    .pipe(catchError(error => {
+      return throwError({
+        message: 'No access to resource'
+      });
+    }));
   }
   update(item) {
     return this.httpClient.put<any>(this.url, item);
