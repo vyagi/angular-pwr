@@ -1,0 +1,5 @@
+<app-todo-list [todos]="todos" (itemClicked)="itemDeleted($event)" (itemChanged)="itemChanged($event)"></app-todo-list>
+<hr>
+<button (click)="itemAdded()" [disabled]="!newTodo">Add todo</button>
+<input type="text" [(ngModel)]="newTodo">
+

@@ -1,0 +1,6 @@
+<ul>
+  <li *ngFor="let item of todos; index as i">{{item.subject}}
+    <input type="checkbox" [(ngModel)]="item.done" (change)="itemChange(item)">
+    <span (click)="itemClick(item)">x</span>
+  </li>
+</ul>
