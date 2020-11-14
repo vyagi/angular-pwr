@@ -7,11 +7,12 @@ import { throwError } from 'rxjs/internal/observable/throwError';
   providedIn: 'root'
 })
 export class TodoService {
-  private url = 'https://todoapimj.azurewebsites.net/api/todo';
+  private url = 'https://angularvolvotodoapi.azurewebsites.net/api/todo/';
   constructor(private httpClient: HttpClient) { }
   get() {
     return this.httpClient.get<any>(this.url)
     .pipe(catchError(error => {
+      console.log(error);
       return throwError({
         message: 'No access to resource'
       });
